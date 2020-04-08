@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/include/http",
+                "${workspaceFolder}/include/controllers",
+                "${workspaceFolder}/include/server/exceptions",
+                "${workspaceFolder}/include/http/exceptions",
+                "${workspaceFolder}/include/utils",
+                "${workspaceFolder}/tests/unitTests",
+                "${workspaceFolder}/include/server",
+                "${workspaceFolder}/tests/fakeClasses"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\MinGW\\bin\\gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x86"
+        }
+    ],
+    "version": 4
+}
