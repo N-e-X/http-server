@@ -12,7 +12,7 @@ class ReadWriteHandler : public IReadWriteHandler
 private:
     int _socketDescriptor;
 public:
-    ReadWriteHandler(int* socketDescriptor);
+    ReadWriteHandler(int socketDescriptor);
     /**
      * @throw RequestTimeoutException
      * @throw ReadSocketException
