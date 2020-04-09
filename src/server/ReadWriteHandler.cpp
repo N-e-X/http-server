@@ -91,7 +91,7 @@ string ReadWriteHandler::ReadBytes(int bytesCount)
 
 void ReadWriteHandler::WriteRawResponse(const string& rawResponse)
 {
-    send(_socketDescriptor, rawResponse, rawResponse.length(), 0); // TODO: проверить, т.к. мб нужно rawResponse.c_str()
+    send(_socketDescriptor, rawResponse.c_str(), rawResponse.length(), 0);
 }
 
 ReadWriteHandler::~ReadWriteHandler()
