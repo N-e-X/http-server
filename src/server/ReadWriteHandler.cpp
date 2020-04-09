@@ -1,4 +1,5 @@
 #include <sstream>
+#include <unistd.h>
 #include <sys/socket.h>
 #include "ReadWriteHandler.hpp"
 
