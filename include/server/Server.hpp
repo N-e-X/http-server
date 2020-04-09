@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <signal.h>
-#include <io.h>
+#include <unistd.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <pthread.h>
