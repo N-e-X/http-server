@@ -12,12 +12,14 @@ CPP = src/router.cpp ${CONTROLLERS_CPP} ${HTTP_CPP} ${SERVER_CPP}
 BUILD_CPP = Main.cpp ${CPP} ${SERVER_PLATFORM_DEPENDENT_CPP}
 TEST_CPP = Tests.cpp ${CPP}
 
-# all: g++ main.cpp src/server.cpp src/controller.cpp src/parser.cpp src/response_handler.cpp src/router.cpp -o http_server_app.exe
+build-linux:
+	g++-7 ${FLAGS} ${BUILD_CPP} -o http_server_app.exe
+
+test-linux:
+	g++-7 ${FLAGS} ${BUILD_CPP} -o http_server_app.exe
+
 build: 
 	g++ ${FLAGS} ${BUILD_CPP} -o http_server_app.exe
-
-# test: 
-# 	g++ ${FLAGS} tests/routerTests.cpp src/http/Request.cpp src/http/Response.cpp src/controllers/HomeController.cpp src/router.cpp -o http_server_app_test.exe
 
 test: 
 	g++ ${TEST_FLAGS} ${TEST_CPP} -o http_server_app_test.exe
