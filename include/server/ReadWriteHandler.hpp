@@ -10,7 +10,7 @@ using std::string;
 class ReadWriteHandler : public IReadWriteHandler
 {
 private:
-    int* _socketDescriptor;
+    int _socketDescriptor;
 public:
     ReadWriteHandler(int* socketDescriptor);
     /**

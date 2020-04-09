@@ -5,7 +5,7 @@
 using std::string;
 using std::stringstream;
 
-ReadWriteHandler::ReadWriteHandler(int* socketDescriptor)
+ReadWriteHandler::ReadWriteHandler(int socketDescriptor)
 {
     _socketDescriptor = socketDescriptor;
 }
@@ -90,7 +90,7 @@ string ReadWriteHandler::ReadBytes(int bytesCount)
 
 void ReadWriteHandler::WriteRawResponse(const string& rawResponse)
 {
-    send(descriptor, rawResponse, rawResponse.length(), 0); // TODO: проверить, т.к. мб нужно rawResponse.c_str()
+    send(_socketDescriptor, rawResponse, rawResponse.length(), 0); // TODO: проверить, т.к. мб нужно rawResponse.c_str()
 }
 
 ReadWriteHandler::~ReadWriteHandler()
