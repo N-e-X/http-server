@@ -44,7 +44,7 @@ void Server::Run(int port)
 
 void Server::HandleConnection(int* descriptor)
 {
-    auto readWriteHandler = new ReadWriteHandler(descriptor);
+    auto readWriteHandler = new ReadWriteHandler(*descriptor);
     auto parser = new Parser();
     auto httpHandler = new HttpHandler(readWriteHandler, parser, _routesMap);
 
@@ -54,7 +54,7 @@ void Server::HandleConnection(int* descriptor)
     delete parser;
     delete readWriteHandler;
 
-    close(descriptor);
+    close(*descriptor);
     pthread_exit(0);
 }
 
