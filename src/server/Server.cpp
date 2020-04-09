@@ -37,9 +37,9 @@ void Server::Run(int port)
     while (1) {
         int *descriptor = (int*)malloc(sizeof(int));		
         *descriptor = accept(sock, NULL, NULL); // Ожидание нового подключения
-        pthread_create(&thread, NULL, (void*)HandleConnection, descriptor); // Запуск задачи в новом потоке
+        pthread_create(&thread, NULL, (void*)&HandleConnection, descriptor); // Запуск задачи в новом потоке
     }
-    close(sock);
+    pclose(sock);
 }
 
 void Server::HandleConnection(int* descriptor)
@@ -54,7 +54,7 @@ void Server::HandleConnection(int* descriptor)
     delete parser;
     delete readWriteHandler;
 
-    close(descriptor);
+    pclose(descriptor);
     pthread_exit(0);
 }
 
