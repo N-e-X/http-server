@@ -123,8 +123,8 @@ string Parser::GetRawResponse(const http::Response* response, http::Protocol pro
     stringstream stream;
     string endLine = "\r\n";
     stream << http::ProtocolToString(protocol) \
-        << ' ' << response->StatusCode \
-        << ' ' << http::StatusCodeToString(response->StatusCode)
+        << ' ' << response->HttpStatusCode \
+        << ' ' << http::StatusCodeToString(response->HttpStatusCode)
         << endLine;
 
     for (auto &&header : response->Headers)

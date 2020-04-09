@@ -12,7 +12,7 @@ namespace http
 {
     typedef struct Response
     {
-        StatusCode StatusCode;
+        StatusCode HttpStatusCode;
         unordered_map<string, string> Headers;
         const char* Body;
 
@@ -23,13 +23,13 @@ namespace http
         { }
         Response(http::StatusCode statusCode)
         {
-            StatusCode = statusCode;
+            HttpStatusCode = statusCode;
             Headers["Server"] = "PetrSU WebServer-v0.1";
             Body = nullptr;
         }
         Response(http::StatusCode statusCode, const char* body)
         {
-            StatusCode = statusCode;
+            HttpStatusCode = statusCode;
             Headers["Server"] = "PetrSU WebServer-v0.1";
             Headers["Content-Type"] = "text/html; charset=utf-8";
             Headers["Content-Length"] = std::to_string(strlen(body));
@@ -42,14 +42,14 @@ namespace http
         { }
         Response(http::StatusCode statusCode, unordered_map<string, string> headers)
         {
-            StatusCode = statusCode;
+            HttpStatusCode = statusCode;
             Headers = headers;
             Headers["Server"] = "PetrSU WebServer-v0.1";
             Body = nullptr;
         }
         Response(http::StatusCode statusCode, unordered_map<string, string> headers, const char* body)
         {
-            StatusCode = statusCode;
+            HttpStatusCode = statusCode;
             Headers = headers;
             Headers["Server"] = "PetrSU WebServer-v0.1";
             if (!Headers.count("Content-Type"))
