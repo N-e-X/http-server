@@ -5,10 +5,11 @@ TEST_FLAGS = $(FLAGS) ${TEST_INCLUDE}
 
 CONTROLLERS_CPP = src/controllers/HomeController.cpp
 HTTP_CPP = src/http/Method.cpp src/http/Protocol.cpp src/http/StatusCode.cpp
+SERVER_PLATFORM_DEPENDENT_CPP = src/server/Server.cpp src/server/ReadWriteHandler.cpp # только для Linux
 SERVER_CPP = src/server/HttpHandler.cpp src/server/Parser.cpp 
 CPP = src/router.cpp ${CONTROLLERS_CPP} ${HTTP_CPP} ${SERVER_CPP}
 
-BUILD_CPP = Main.cpp ${CPP}
+BUILD_CPP = Main.cpp ${CPP} ${SERVER_PLATFORM_DEPENDENT_CPP}
 TEST_CPP = Tests.cpp ${CPP}
 
 # all: g++ main.cpp src/server.cpp src/controller.cpp src/parser.cpp src/response_handler.cpp src/router.cpp -o http_server_app.exe
