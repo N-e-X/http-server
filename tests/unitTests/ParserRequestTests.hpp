@@ -31,7 +31,7 @@ private:
         // act
         auto request = _parser->GetRequest(rawRequest);
         // assert
-        assert(request->Method == http::Method::HEAD);
+        assert(request->HttpMethod == http::Method::HEAD);
 
         delete request;
     }
@@ -43,7 +43,7 @@ private:
         // act
         auto request = _parser->GetRequest(rawRequest);
         // assert
-        assert(request->Method == http::Method::GET);
+        assert(request->HttpMethod == http::Method::GET);
 
         delete request;
     }
@@ -55,7 +55,7 @@ private:
         // act
         auto request = _parser->GetRequest(rawRequest);
         // assert
-        assert(request->Method == http::Method::POST);
+        assert(request->HttpMethod == http::Method::POST);
 
         delete request;
     }

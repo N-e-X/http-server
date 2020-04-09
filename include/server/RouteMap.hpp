@@ -11,12 +11,12 @@ using std::vector;
 
 typedef struct RouteMap {
     const char* Route;
-    http::Method Method;
+    http::Method HttpMethod;
     function<http::Response*(const http::Request*)> Action;
     RouteMap(const char* route, http::Method method, function<http::Response*(const http::Request*)> handler)
     {
         Route = route;
-        Method = method;
+        HttpMethod = method;
         Action = handler;
     };
 } RouteMap;

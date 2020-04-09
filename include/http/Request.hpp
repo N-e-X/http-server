@@ -12,7 +12,7 @@ namespace http
     typedef struct Request
     {
         string RelativeUrl;
-        Method Method;
+        Method HttpMethod;
         unordered_map<string, string> Headers;
         unordered_map<string, string> QueryParameters;
         char* Body;

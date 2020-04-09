@@ -14,7 +14,7 @@ http::Request* Parser::GetRequest(const string& rawRequest)
     getline(rawRequestStream, line);
     trim(line);
 
-    request->Method = GetMethodFromStartLine(line);
+    request->HttpMethod = GetMethodFromStartLine(line);
     request->RelativeUrl = GetRelativeUrlFromStartLine(line);
     request->QueryParameters = GetQueryParamsFromStartLine(line);
 

@@ -81,9 +81,9 @@ http::Response* HttpHandler::GetResponse(const http::Request* request)
         if (!strcmp(routeMap.Route, request->RelativeUrl.c_str()))
         {
             isRouteMatched = true;
-            allowedMethods.push_back(routeMap.Method);
+            allowedMethods.push_back(routeMap.HttpMethod);
 
-            if (routeMap.Method == request->Method)
+            if (routeMap.HttpMethod == request->HttpMethod)
                 return routeMap.Action(request);
         }
     }
