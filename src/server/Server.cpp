@@ -1,5 +1,12 @@
 #include "Server.hpp"
 
+
+___HandleConnection(int* descriptor, const vector<RouteMap>* routeMap);
+typedef struct {
+    int Descriptor;
+    vector<RouteMap>* RoutesMap;
+} ___HandleConnectionArgs;
+
 Server::Server(vector<RouteMap>* routesMap)
 {
     _routesMap = routesMap;
@@ -35,33 +42,20 @@ void Server::Run(int port)
     std::cout << "Сервер запущен. Порт: " << port << std::endl\
         << "Ожидание подключений..." << std::endl;
     while (1) {
-        int *descriptor = (int*)malloc(sizeof(int));		
-        *descriptor = accept(sock, NULL, NULL); // Ожидание нового подключения
-        pthread_create(&thread, NULL, (void*) [descriptor, this]() 
-            { 
-                auto readWriteHandler = new ReadWriteHandler(*descriptor);
-                auto parser = new Parser();
-                auto httpHandler = new HttpHandler(readWriteHandler, parser, this._routesMap);
+        auto args = new ___HandleConnectionArgs();
+        args->RoutesMap = _routesMap;
+        args->Descriptor = accept(sock, NULL, NULL); // Ожидание нового подключения
 
-                httpHandler->Handle();
-
-                delete httpHandler;
-                delete parser;
-                delete readWriteHandler;
-
-                close(*descriptor);
-                pthread_exit(0);
-            }, 
-            descriptor); // Запуск задачи в новом потоке
+        pthread_create(&thread, NULL, (void*)___HandleConnection, args); // Запуск задачи в новом потоке
     }
     close(sock);
 }
 
-void Server::HandleConnection(int* descriptor)
+void* ___HandleConnection(___HandleConnectionArgs* args)
 {
-    auto readWriteHandler = new ReadWriteHandler(*descriptor);
+    auto readWriteHandler = new ReadWriteHandler(args->Descriptor);
     auto parser = new Parser();
-    auto httpHandler = new HttpHandler(readWriteHandler, parser, _routesMap);
+    auto httpHandler = new HttpHandler(readWriteHandler, parser, args->RoutesMap);
 
     httpHandler->Handle();
 
@@ -69,7 +63,8 @@ void Server::HandleConnection(int* descriptor)
     delete parser;
     delete readWriteHandler;
 
-    close(*descriptor);
+    close(args->Descriptor);
+    delete args;
     pthread_exit(0);
 }
 
