@@ -12,12 +12,6 @@
 #include "ReadWriteHandler.hpp"
 #include "Parser.hpp"
 
-typedef struct {
-    int Descriptor;
-    vector<RouteMap>* RoutesMap;
-} ___HandleConnectionArgs;
-___HandleConnection(___HandleConnectionArgs* args);
-
 class Server
 {
 private:
