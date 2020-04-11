@@ -22,8 +22,8 @@ linux-build:
 linux-test:
 	g++-7 ${TEST_FLAGS} ${TEST_CPP} -o http_server_app_test.exe
 
-build: 
-	g++ ${DEBUG_FLAGS} ${BUILD_CPP} -o http_server_app.exe
+#build: 
+#	g++ ${DEBUG_FLAGS} ${BUILD_CPP} -o http_server_app.exe
 
 test: 
 	g++ ${TEST_FLAGS} ${TEST_CPP} -o http_server_app_test.exe
