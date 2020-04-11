@@ -4,7 +4,7 @@ typedef struct {
     int Descriptor;
     vector<RouteMap>* RoutesMap;
 } ___HandleConnectionArgs;
-___HandleConnection(___HandleConnectionArgs* args);
+void* ___HandleConnection(___HandleConnectionArgs* args);
 
 Server::Server(vector<RouteMap>* routesMap)
 {
