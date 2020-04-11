@@ -12,7 +12,4 @@ http::Response* HomeController::NewPage(const http::Request*) {
     return response;
 }
 
-HomeController::~HomeController() {
-    // delete _routesMap;
-}
-
+HomeController::~HomeController() {}
