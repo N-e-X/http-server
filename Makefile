@@ -1,5 +1,5 @@
 INCLUDE = -I./include -I./include/http -I./include/http/exceptions -I./include/controllers -I./include/server -I./include/server/exceptions -I./include/utils
-FLAGS = -Wall -g -std=c++17 $(INCLUDE)
+FLAGS = -Wall -g -std=c++17 $(INCLUDE) -pthread
 TEST_INCLUDE = -I./tests/unitTests -I./tests/fakeClasses
 TEST_FLAGS = $(FLAGS) ${TEST_INCLUDE}
 
