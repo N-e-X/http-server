@@ -23,9 +23,7 @@ private:
     string GetRelativeUrlFromStartLine(string& line);
     unordered_map<string, string> GetQueryParamsFromStartLine(string& line);
     unordered_map<string, string> GetQueryParams(string& queryParamsString);
-    // Response private methods
     
-
 public:
     Parser(/* args */);
     /**
