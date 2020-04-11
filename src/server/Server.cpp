@@ -1,12 +1,5 @@
 #include "Server.hpp"
 
-
-___HandleConnection(int* descriptor, const vector<RouteMap>* routeMap);
-typedef struct {
-    int Descriptor;
-    vector<RouteMap>* RoutesMap;
-} ___HandleConnectionArgs;
-
 Server::Server(vector<RouteMap>* routesMap)
 {
     _routesMap = routesMap;

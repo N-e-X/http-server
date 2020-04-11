@@ -12,11 +12,16 @@
 #include "ReadWriteHandler.hpp"
 #include "Parser.hpp"
 
+typedef struct {
+    int Descriptor;
+    vector<RouteMap>* RoutesMap;
+} ___HandleConnectionArgs;
+___HandleConnection(___HandleConnectionArgs* args);
+
 class Server
 {
 private:
     vector<RouteMap>* _routesMap;
-    void HandleConnection(int* descriptor);
 public:
     Server(vector<RouteMap>* routesMap);
     void Run(int port);
