@@ -37,7 +37,22 @@ void Server::Run(int port)
     while (1) {
         int *descriptor = (int*)malloc(sizeof(int));		
         *descriptor = accept(sock, NULL, NULL); // Ожидание нового подключения
-        pthread_create(&thread, NULL, (void*)&HandleConnection, descriptor); // Запуск задачи в новом потоке
+        pthread_create(&thread, NULL, (void*) [descriptor, this]() 
+            { 
+                auto readWriteHandler = new ReadWriteHandler(*descriptor);
+                auto parser = new Parser();
+                auto httpHandler = new HttpHandler(readWriteHandler, parser, this._routesMap);
+
+                httpHandler->Handle();
+
+                delete httpHandler;
+                delete parser;
+                delete readWriteHandler;
+
+                close(*descriptor);
+                pthread_exit(0);
+            }, 
+            descriptor); // Запуск задачи в новом потоке
     }
     close(sock);
 }
