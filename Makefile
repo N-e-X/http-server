@@ -20,7 +20,7 @@ linux-build:
 	g++-7 ${DEBUG_FLAGS} ${BUILD_CPP} -o http_server_app.exe
 
 linux-test:
-	g++-7 ${DEBUG_FLAGS} ${BUILD_CPP} -o http_server_app.exe
+	g++-7 ${TEST_FLAGS} ${TEST_CPP} -o http_server_app_test.exe
 
 build: 
 	g++ ${DEBUG_FLAGS} ${BUILD_CPP} -o http_server_app.exe
