@@ -45,14 +45,14 @@ void Server::Run(int port)
         args->RoutesMap = _routesMap;
         args->Descriptor = accept(sock, NULL, NULL); // Ожидание нового подключения
 
-        pthread_create(&thread, NULL, (void*)___HandleConnection, args); // Запуск задачи в новом потоке
+        pthread_create(&thread, NULL, ___HandleConnection, args); // Запуск задачи в новом потоке
     }
     close(sock);
 }
 
 void* ___HandleConnection(void* voidArgs)
 {
-    ___HandleConnectionArgs* args = voidArgs;
+    ___HandleConnectionArgs* args = (___HandleConnectionArgs*)voidArgs;
     auto readWriteHandler = new ReadWriteHandler(args->Descriptor);
     auto parser = new Parser();
     auto httpHandler = new HttpHandler(readWriteHandler, parser, args->RoutesMap);
