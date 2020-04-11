@@ -25,7 +25,7 @@ void HttpHandler::Handle()
         request = _parser->GetRequest(rawRequest);
         ValidateRequest(request, protocol);
 
-        if (request->Headers.count("Content-Length"))
+        if (request->Headers.count("Content-Length") && request->Body)
         {
             auto missingBytesCount = std::stoi(request->Headers["Content-Length"]) - strlen(request->Body);
             if (missingBytesCount > 0)
@@ -40,6 +40,7 @@ void HttpHandler::Handle()
         response = GetResponse(request);
     }
 
+    catch(const RequestTimeoutException& e) { response = new http::Response(http::StatusCode::RequestTimeout); }
     catch(const MethodFromStringConvertionException& e) { response = new http::Response(http::StatusCode::NotImplemented); }
     catch(const ProtocolFromStringConvertionException& e) { response = new http::Response(http::StatusCode::HttpVersionNotSupported); }
     catch(const BadRequestException& e) { response = new http::Response(http::StatusCode::BadRequest); }

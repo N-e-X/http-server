@@ -3,17 +3,33 @@
   // for the documentation about the tasks.json format
   "version": "2.0.0",
   "type": "shell",
-  "command": "mingw32-make.exe",
   "problemMatcher": [ "$gcc" ],
   "group": "build",
   "tasks": [
     {
-      "label": "build",
-      "args": [ "build" ]
+      "command": "make",
+      "label": "linux-build",
+      "args": [
+        "linux-build"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     },
     {
+      "command": "mingw32-make.exe",
+      "label": "build",
+      "args": [
+        "build"
+      ]
+    },
+    {
+      "command": "mingw32-make.exe",
       "label": "build tests",
-      "args": [ "test" ],
+      "args": [
+        "test"
+      ]
     }
   ]
 }

@@ -12,10 +12,10 @@ CPP = src/router.cpp ${CONTROLLERS_CPP} ${HTTP_CPP} ${SERVER_CPP}
 BUILD_CPP = Main.cpp ${CPP} ${SERVER_PLATFORM_DEPENDENT_CPP}
 TEST_CPP = Tests.cpp ${CPP}
 
-build-linux:
+linux-build:
 	g++-7 ${FLAGS} ${BUILD_CPP} -o http_server_app.exe
 
-test-linux:
+linux-test:
 	g++-7 ${FLAGS} ${BUILD_CPP} -o http_server_app.exe
 
 build: 

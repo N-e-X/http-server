@@ -5,6 +5,27 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "linux build and debug",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/http_server_app.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerArgs": "set print elements 0",
+      "setupCommands": [
+          {
+              "description": "Включить автоматическое форматирование для gdb",
+              "text": "-enable-pretty-printing",
+              "ignoreFailures": true
+          }
+      ],
+      "preLaunchTask": "linux-build"
+    },
+    {
       "name": "build and debug",
       "type": "cppdbg",
       "request": "launch",

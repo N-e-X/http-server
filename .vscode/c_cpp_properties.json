@@ -22,7 +22,58 @@
             "compilerPath": "C:\\MinGW\\bin\\gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "clang-x86"
+            "intelliSenseMode": "clang-x86",
+            "compilerArgs": [],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**",
+                    "${workspaceFolder}/include",
+                    "${workspaceFolder}/include/http",
+                    "${workspaceFolder}/include/controllers",
+                    "${workspaceFolder}/include/server/exceptions",
+                    "${workspaceFolder}/include/http/exceptions",
+                    "${workspaceFolder}/include/utils",
+                    "${workspaceFolder}/tests/unitTests",
+                    "${workspaceFolder}/include/server",
+                    "${workspaceFolder}/tests/fakeClasses"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/include/http",
+                "${workspaceFolder}/include/controllers",
+                "${workspaceFolder}/include/server/exceptions",
+                "${workspaceFolder}/include/http/exceptions",
+                "${workspaceFolder}/include/utils",
+                "${workspaceFolder}/tests/unitTests",
+                "${workspaceFolder}/include/server",
+                "${workspaceFolder}/tests/fakeClasses"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**",
+                    "${workspaceFolder}/include",
+                    "${workspaceFolder}/include/http",
+                    "${workspaceFolder}/include/controllers",
+                    "${workspaceFolder}/include/server/exceptions",
+                    "${workspaceFolder}/include/http/exceptions",
+                    "${workspaceFolder}/include/utils",
+                    "${workspaceFolder}/tests/unitTests",
+                    "${workspaceFolder}/include/server",
+                    "${workspaceFolder}/tests/fakeClasses"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4

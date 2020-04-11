@@ -22,6 +22,11 @@ vector<RouteMap> GetHomeControllerRoutesMap()
     vector<RouteMap> routesMap
     {
         RouteMap(
+            "", 
+            http::Method::GET, 
+            [](const http::Request* request) { HomeController homeController; return homeController.Index(request);}
+        ),
+        RouteMap(
             "index", 
             http::Method::GET, 
             [](const http::Request* request) { HomeController homeController; return homeController.Index(request);}

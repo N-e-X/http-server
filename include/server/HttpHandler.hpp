@@ -6,6 +6,7 @@
 #include "RouteMap.hpp"
 #include "IReadWriteHandler.hpp"
 #include "Parser.hpp"
+#include "RequestTimeoutException.hpp"
 #include "BadRequestException.hpp"
 #include "MethodFromStringConvertionException.hpp"
 #include "ProtocolFromStringConvertionException.hpp"

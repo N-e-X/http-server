@@ -14,7 +14,7 @@ namespace http
     {
         StatusCode HttpStatusCode;
         unordered_map<string, string> Headers;
-        const char* Body;
+        char* Body;
 
         /**
          * Response with OK status
@@ -32,8 +32,12 @@ namespace http
             HttpStatusCode = statusCode;
             Headers["Server"] = "PetrSU WebServer-v0.1";
             Headers["Content-Type"] = "text/html; charset=utf-8";
-            Headers["Content-Length"] = std::to_string(strlen(body));
-            Body = body;
+            
+            auto bodyLength = strlen(body);
+            Headers["Content-Length"] = std::to_string(bodyLength);
+            
+            Body = new char[bodyLength + 1];
+            strcpy(Body, body);
         }
         /**
          * Response with OK status
@@ -54,12 +58,16 @@ namespace http
             Headers["Server"] = "PetrSU WebServer-v0.1";
             if (!Headers.count("Content-Type"))
                 Headers["Content-Type"] = "text/html; charset=utf-8";
-            Headers["Content-Length"] = std::to_string(strlen(body));
-            Body = body;
+
+            auto bodyLength = strlen(body);
+            Headers["Content-Length"] = std::to_string(bodyLength);
+            
+            Body = new char[bodyLength + 1];
+            strcpy(Body, body);
         }
         ~Response()
         {
-            delete Body;
+            delete[] Body;
         };
     } Response;
 }
