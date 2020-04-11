@@ -4,7 +4,7 @@ typedef struct {
     int Descriptor;
     vector<RouteMap>* RoutesMap;
 } ___HandleConnectionArgs;
-void* ___HandleConnection(___HandleConnectionArgs* args);
+void* ___HandleConnection(void* voidArgs);
 
 Server::Server(vector<RouteMap>* routesMap)
 {
@@ -50,8 +50,9 @@ void Server::Run(int port)
     close(sock);
 }
 
-void* ___HandleConnection(___HandleConnectionArgs* args)
+void* ___HandleConnection(void* voidArgs)
 {
+    ___HandleConnectionArgs* args = voidArgs;
     auto readWriteHandler = new ReadWriteHandler(args->Descriptor);
     auto parser = new Parser();
     auto httpHandler = new HttpHandler(readWriteHandler, parser, args->RoutesMap);
